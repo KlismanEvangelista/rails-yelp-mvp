@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @restaurant %>
+<div >
+  <p><strong>Reviews</strong></p>
+  <ul class="list-group">
+    <% @restaurant.reviews.each do |review| %>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between">
+          <%= review.content %>
+          <%= button_to "Delete review", review_path(review), method: :delete, class: 'btn btn-danger' %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<div>
+  <%= link_to "Edit this restaurant", edit_restaurant_path(@restaurant) %> |
+  <%= link_to "Back to restaurants", restaurants_path %>
+
+  <%= button_to "Destroy this restaurant", @restaurant, method: :delete %>
+</div>
